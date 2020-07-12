@@ -1,0 +1,59 @@
+{% extends 'practice/base.html' %}
+{% block title %}
+Products
+{% endblock title %}
+{% block content %}
+<!-- ============================================================== -->
+<!-- Page Content -->
+<!-- ============================================================== -->
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row bg-title">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <h4 class="page-title">Basic Table</h4>
+            </div>
+        </div>
+        <!-- /row -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="white-box">
+                    <h3 class="box-title">Basic Table</h3>
+                    <a href="{% url 'addproduct' %}" class="btn btn-primary">Add Product</a>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Description</th>
+                                    <th>Category</th>
+                                    <th>Price</th>
+                                    <th>Update Price</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in product %}
+                                <tr>
+                                    <td>{{i.name}}</td>
+                                    <td>{{i.description}}</td>
+                                    <td>{{i.category}}</td>
+                                    <td class="text-success">{{i.Price}}</td>
+                                    <td><a class="btn btn-small btn-info" href="{% url 'updateBook' i.id %}">Update</a>
+                                    </td>
+                                    <td><a class="btn btn-small btn-danger"
+                                            href="{% url 'deleteBook' i.id %}">Remove</a></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+    <footer class="footer text-center"> 2017 &copy; Ample Admin brought to you by wrappixel.com</footer>
+</div>
+<!-- /#page-wrapper -->
+{% endblock %}

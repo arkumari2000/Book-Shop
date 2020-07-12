@@ -1,0 +1,51 @@
+{% extends 'practice/base.html' %}
+{% block title %}
+Profile
+{% endblock title %}
+{% block content %}
+
+{% load crispy_forms_tags %}
+<!-- ============================================================== -->
+<!-- Page Content -->
+<!-- ============================================================== -->
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row bg-title">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <h4 class="page-title">Profile</h4>
+            </div>
+        </div>
+        <!-- /.row -->
+        <!-- .row -->
+        <div class="row">
+            <div class="col-md-4 col-xs-12">
+                <div class="white-box">
+                    <div class="user-bg">
+                        <img width="100%" alt="user" src="{{request.user.customer.profile_pic.url}}">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 col-xs-12">
+                <div class="white-box">
+                    <form class="form-horizontal form-material" method='POST' enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{form.name|as_crispy_field}}
+                        {{form.email|as_crispy_field}}
+                        {{form.phone|as_crispy_field}}
+                        {{form.profile_pic|as_crispy_field}}
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <button class="btn btn-success">Update Profile</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+    <footer class="footer text-center"> 2017 &copy; Ample Admin brought to you by wrappixel.com </footer>
+</div>
+<!-- /#page-wrapper -->
+{% endblock %}

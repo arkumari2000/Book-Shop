@@ -1,0 +1,33 @@
+{% extends 'practice/base.html' %}
+{% block title %}
+Delete Order
+{% endblock title %}
+{% block content %}
+<!-- ============================================================== -->
+<!-- Page Content -->
+<!-- ============================================================== -->
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row bg-title">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <h4 class="page-title">Order Update Form</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="white-box">
+                    <p>Are you sure you want to Delete "{{product}}{{customer}}" item?</p>
+                    <form method="post">
+                        {% csrf_token %}
+                        <a href="{% url 'dashboard' %}" class="btn btn-warning">Cancel</a>
+                        <button type="submit" class="btn btn-danger">delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- End Page Content -->
+<!-- ============================================================== -->
+{% endblock %}

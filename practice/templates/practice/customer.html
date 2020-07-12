@@ -1,0 +1,88 @@
+{% extends 'practice/base.html' %}
+{% block title %}
+Customer Detail
+{% endblock title %}
+{% block content %}
+<!-- ============================================================== -->
+<!-- Page Content -->
+<!-- ============================================================== -->
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row bg-title">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <h4 class="page-title">Customer Detail</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-lg-6 col-sm-6">
+                <div class="white-box">
+                    <h3 class="box-title">Customers Detail</h3>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tr>
+                                <th>Name</th>
+                                <td>{{customer.name}}</td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td>{{customer.email}}</td>
+                            </tr>
+                            <tr>
+                                <th>Phone</th>
+                                <td>{{customer.phone}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-sm-6">
+                <div class="white-box">
+                    <div style="width: 100%;">
+                        <a href="{% url 'order' customer.id %}" class="btn btn-info">Place Order</a>
+                    </div>
+                    <br>
+                    <dive>
+                        <a href="{% url 'deletecustomer' customer.id %}" class="btn btn-danger">Delete Customer</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="white-box">
+                <h3 class="box-title">Orders Detail</h3>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Status</th>
+                                <th>Price</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in order %}
+                            <tr>
+                                <td>{{i.product}}</td>
+                                <td>{{i.status}}</td>
+                                <td><span class="text-success">{{i.product.Price}}</span></td>
+                                <td><a class="btn btn-sm btn-info" href="{% url 'update' i.id %}">View</a></td>
+                                <td><a class="btn btn-sm btn-danger" href="{% url 'delete' i.id %}">Remove</a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.container-fluid -->
+<footer class="footer text-center"> 2017 &copy; Ample Admin brought to you by wrappixel.com </footer>
+</div>
+<!-- ============================================================== -->
+<!-- End Page Content -->
+<!-- ============================================================== -->
+{% endblock %}
